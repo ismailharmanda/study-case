@@ -16,7 +16,7 @@ body {
   font-size: 1rem;
   border-radius: 1rem;
   &:hover {
-      background:cyan;
-      color:$dark-red
+      background:lighten($dark-red,20%);
+      color:darken($dark-red, 20%)
   }
 }
