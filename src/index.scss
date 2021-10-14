@@ -1,6 +1,22 @@
+$dark-red:#b32626;
 *{
   box-sizing: border-box;
 }
 body {
   margin: 0;
+}
+
+.button-shaker {
+  cursor: pointer;
+  background: $dark-red;
+  font-weight: 700;
+  padding: 1rem 0;
+  color: white;
+  width: 10%;
+  font-size: 1rem;
+  border-radius: 1rem;
+  &:hover {
+      background:cyan;
+      color:$dark-red
+  }
 }

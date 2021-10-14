@@ -1,4 +1,4 @@
 const Shaker=()=>{
-    return <button>Shaker</button>
+    return <button className="button-shaker">Shaker</button>
 }
 export default Shaker
