@@ -1,15 +1,12 @@
 import Tree from "./Tree/Tree";
 import Basket from "./Basket/Basket";
-import Shaker from "./Button/Shaker";
-
-const App=()=> {
+const App = () => {
   return (
     <>
-    <Tree />
-    <Basket />
-    <Shaker />
+      <Tree />
+      <Basket />
     </>
-  )
-}
+  );
+};
 
 export default App;

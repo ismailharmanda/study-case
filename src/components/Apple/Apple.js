@@ -1,9 +1,19 @@
-import apple from "../../assets/apple.svg"
+import apple from "../../assets/apple.svg";
 
-const Apple = ()=> {
-    return (
-        <img src={apple} alt='Apple' />
-    )
-}
+import classNames from "classnames";
 
-export default Apple
+const Apple = ({ style, isShaking, isDropped }) => {
+  return (
+    <img
+      style={style}
+      className={classNames({
+        apple: true,
+        shaking: isShaking && !isDropped,
+      })}
+      src={apple}
+      alt="Apple"
+    />
+  );
+};
+
+export default Apple;

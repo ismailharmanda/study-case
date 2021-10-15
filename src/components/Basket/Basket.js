@@ -1,8 +1,7 @@
-import basket from "../../assets/basket.svg"
-import Apple from "../Apple/Apple"
+import basket from "../../assets/basket.svg";
 
-const Basket= () => {
-    return <img src={basket} alt='Basket' />
-}
+const Basket = () => {
+  return <img className="basket" src={basket} alt="Basket" />;
+};
 
-export default Basket
+export default Basket;
