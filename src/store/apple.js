@@ -64,22 +64,24 @@ const appleSlice = createSlice({
     },
     drop(state, action) {
       const { id, isDropped, transition } = action.payload;
-      state.apples[id].isDropped = isDropped;
+      const targetAple = state.apples.find((apple) => apple.id === id);
+      targetAple.isDropped = isDropped;
       if (isDropped) {
-        state.apples[id].top = "95%";
-        state.apples[id].transition = transition;
+        targetAple.top = "95%";
+        targetAple.transition = transition;
       }
     },
     carry(state, action) {
       const { id, transition } = action.payload;
-      const isDropped = state.apples[id].isDropped;
-      const isCarried = state.apples[id].isCarried;
+      const targetAple = state.apples.find((apple) => apple.id === id);
+      const isDropped = targetAple.isDropped;
+      const isCarried = targetAple.isCarried;
 
       if (isDropped && !isCarried) {
-        state.apples[id].top = "95%";
-        state.apples[id].left = `${Math.random() * 5 + 90}vw`;
-        state.apples[id].transition = transition;
-        state.apples[id].isCarried = true;
+        targetAple.top = "95%";
+        targetAple.transition = transition;
+        targetAple.left = `${Math.random() * 5 + 90}vw`;
+        targetAple.isCarried = true;
       }
     },
     reset(state, action) {

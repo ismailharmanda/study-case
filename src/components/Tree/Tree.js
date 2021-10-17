@@ -14,33 +14,34 @@ const Tree = () => {
   //Apples
   const apples = useSelector((state) => state.apples.apples);
 
-  // //Apples which are still on tree
-  // const notDroppedApple = apples.find((apple) => !apple.isDropped);
-
   //Global shaking state
   const isShaking = useSelector((state) => state.apples.isShaking);
 
   const dropApples = () => {
-    for (let appleIndex = 0; appleIndex < apples.length; appleIndex++) {
+    //Apples which are still on tree
+    const notDroppedApples = apples.filter((apple) => !apple.isDropped);
+
+    // Define a random animation time
+    const transitionTime = Math.ceil(Math.random() * 4);
+
+    // We reach to store in order to take some actions with apples which are still on tree
+    notDroppedApples.forEach((apple, index) => {
       // Apples have a 50% chance of falling.
       const isDropped = Math.random() < 0.5;
+      dispatch(
+        appleActions.drop({
+          id: apple.id,
+          transition: `${transitionTime}s`,
+          // We guarantee that everytime at least one apple gonna drop
+          isDropped: index === 0 ? true : isDropped,
+        })
+      );
 
-      const transitionTime = Math.ceil(Math.random() * 4);
-
-      !apples[appleIndex].isDropped &&
-        dispatch(
-          appleActions.drop({
-            id: appleIndex,
-            transition: `${transitionTime}s`,
-            isDropped: isDropped,
-          })
-        );
-
-      isDropped &&
+      (index === 0 || isDropped) &&
         setTimeout(() => {
-          dispatch(appleActions.carry({ id: appleIndex, transition: "3s" }));
+          dispatch(appleActions.carry({ id: apple.id, transition: "3s" }));
         }, transitionTime * 1000 + 1000);
-    }
+    });
   };
 
   //Shaker button triggers these actions:
